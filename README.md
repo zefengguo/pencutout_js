@@ -73,4 +73,10 @@ _penCutout.createCutImg(function (imgSrcData, w, h) {})
 _penCutout.downLoad();
 ```
 
+## 注意事项
+```html
+1.谷歌chrome本地打开index.html，由于安全设置，会报如下错误，解决方案：使用火狐或IE，放到服务器访问不存在如下问题。
+Access to image at 'file:///D:/mywork/pen-cutout-js/static/file/target.jpg' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.
+target.jpg:1 Failed to load resource: net
+```
 

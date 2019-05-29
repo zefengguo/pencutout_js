@@ -450,6 +450,7 @@
         }
         var proxy = this;
         var img = new Image();
+        img.crossOrigin = "Anonymous";
         img.src = this.defaults.imgSrc;
         img.onload = function () {
             var canvas = document.createElement("canvas");
@@ -479,6 +480,7 @@
         }
         var proxy = this;
         var img = new Image();
+        img.crossOrigin = "Anonymous";
         img.src = this.defaults.imgSrc;
         img.onload = function () {
             var canvas = document.createElement("canvas");
