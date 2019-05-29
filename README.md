@@ -1,0 +1,76 @@
+# 钢笔抠图插件
+基于Html5 Canvas 实现js钢笔抠图插件.
+
+## 背景
+2014年，基于js研发一款类似PS中钢笔抠图功能的插件，核心源码以博客的形式发表： [html5 canvas+js实现ps钢笔抠图]( https://www.cnblogs.com/guozefeng/p/3719915.html) ，之后陆续有其他开发者提出一些需求和建议，比如能不能支持js前端生成抠图、图片等比抠图、自定义图片尺寸等等，我将逐渐优化该插件使之最终能成为一款功能完善、拿来即用的抠图插件。
+
+## 兼容（ie8+、火狐、谷歌等主流浏览器）
+![avatar](static/file/penCutout.png)
+
+## 合作交流
+该插件仅供学习研究，未授权商用。插件商用还请联系如下，我们将提供功能齐全的商用定制化插件。
+* QQ : 1624484726
+* mail: 1624484726@qq.com
+
+## 应用案例
+
+* 速抠图 www.sukoutu.com
+
+  [速抠图sukoutu.com](http://www.sukoutu.com) 一个完成度较高的在线抠图工具，集成了该钢笔抠图插件，在此基础上集成了智能抠图、矩阵抠图、图片压缩、图片格式转换的一些功能。
+
+## 使用方法
+```js
+//默认配置项
+ this.defaults = {
+        //画板容器id
+        drawPanel: "drawPanel",
+        //自动生成canvas标签Id
+        canvasId: "canvas",
+        //自动生成图片标签Id
+        imgId: "imgCut",
+        //画板宽度
+        width: 400,
+        //画板高度
+        height: 400,
+        //抠图图片src
+        imgSrc: "file/target.jpg",
+        //抠图完成填充背景图片（默认）
+        imgBackSrc: "file/tranback.png",
+        //钢笔色
+        penColor: "#0087C4",
+        //初始话钢笔抠图坐标集合
+        defaultPointList: new Array(),
+        showTip: function (msg) {
+            alert(msg);
+        }
+    };
+
+
+// 使用（通过init方法覆盖默认属性，并初始化事件）
+  var _penCutout = new penCutout();
+            _penCutout.init({
+                //覆盖属性
+                drawPanel: "drawPanel",
+                imgSrc: "file/target.jpg",
+                width: 400,
+                height: 400
+            });
+            
+            
+// 支持动态修改默认项
+_penCutout.iniData(options);
+
+// 获取钢笔抠图坐标点（可以post给后端渲染）
+_penCutout.can.pointList
+
+//重做
+ _penCutout.downLoad();
+
+// 获取剪裁图片urlData(imgsrcData,生成图片的宽度，生成图片的高度)
+_penCutout.createCutImg(function (imgSrcData, w, h) {})
+
+//下载图片（兼容ie8+、火狐、谷歌等主流浏览器）
+_penCutout.downLoad();
+```
+
+

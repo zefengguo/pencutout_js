@@ -1,0 +1,17 @@
+
+.canvasDiv {
+    border: 1px dashed #c89191;
+}
+
+#imgCutShow {
+    position: absolute;
+    display: none;
+    border: 1px dashed #c89191;
+    margin: 0px 410px;
+}
+
+.tools {
+    position: absolute;
+    clear: both;
+    margin-top: 410px;
+}

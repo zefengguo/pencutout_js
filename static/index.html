@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>ImgCut</title>
+    <link href="css/penCutout.css" rel="stylesheet"/>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/penCutout.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var _penCutout = new penCutout();
+            _penCutout.init({
+                drawPanel: "drawPanel",
+                imgSrc: "file/target.jpg",
+                penColor: "#ff40ef",
+                width: 400,
+                height: 400
+            });
+            //事件
+            $("#btnPoints").click(function () {
+                alert(JSON.stringify(_penCutout.can.pointList));
+            })
+            $("#btnCut").click(function () {
+                _penCutout.createCutImg(function (imgSrcData, w, h) {
+                    $("#imgCutShow").attr("src", imgSrcData).css({"display": "block", "width": w, "height": h});
+                })
+            })
+            $("#btnDown").click(function () {
+                _penCutout.downLoad();
+            })
+            $("#redo").click(function () {
+                _penCutout.ReDo();
+            })
+        })
+
+    </script>
+</head>
+<body>
+<div class="canvasDiv" id="drawPanel">
+</div>
+<div class="tools">
+    <input type="button" value="坐标" id="btnPoints">
+    <input type="button" value="重做" id="redo"/>
+    <input type="button" value="裁剪" id="btnCut"/>
+    <input type="button" value="下载" id="btnDown"/>
+</div>
+<img id="imgCutShow">
+</body>
+</html>
