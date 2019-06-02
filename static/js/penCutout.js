@@ -195,9 +195,6 @@
             this.drawLine(p[i].pointx, p[i].pointy, p[i + 1].pointx, p[i + 1].pointy);
             //画圈
             this.drawArc(p[i].pointx, p[i].pointy);
-            if (i == this.can.pointList.length - 2) {
-                this.drawArc(p[i + 1].pointx, p[i + 1].pointy);
-            }
         }
     }
     //动态线针：(光标的x,y)
@@ -227,10 +224,6 @@
     }
     //画线
     this.drawLine = function (startX, startY, endX, endY) {
-        //var grd = this.can.canvas.createLinearGradient(0, 0,2,0); //坐标，长宽
-        //grd.addColorStop(0, "black"); //起点颜色
-        //grd.addColorStop(1, "white");
-        //this.can.canvas.strokeStyle = grd;
         this.can.canvas.strokeStyle = this.can.penColor;
         this.can.canvas.lineWidth = 1;
         this.can.canvas.moveTo(startX, startY);
@@ -243,7 +236,7 @@
         this.can.canvas.beginPath();
         this.can.canvas.arc(x, y, this.can.roundrr, 360, Math.PI * 2, true);
         this.can.canvas.closePath();
-        this.can.canvas.fill();
+        this.can.canvas.stroke();
     }
     //画圈：
     this.drawArcSmall = function (x, y) {
@@ -251,7 +244,7 @@
         this.can.canvas.beginPath();
         this.can.canvas.arc(x, y, 0.1, 360, Math.PI * 2, true);
         this.can.canvas.closePath();
-        this.can.canvas.fill();
+        this.can.canvas.stroke();
     }
     //光标移到线上画大圈：
     this.drawArcBig = function (x, y) {
@@ -259,13 +252,7 @@
         this.can.canvas.beginPath();
         this.can.canvas.arc(x, y, this.can.roundr + 2, 360, Math.PI * 2, true);
         this.can.canvas.closePath();
-        this.can.canvas.fill();
-    }
-    //渲染图片往画布上
-    this.showImg = function () {
-        this.img.image.onload = function () {
-            this.can.canvas.drawImage(this.img.image, 0, 0, this.img.w, this.img.h);
-        };
+        this.can.canvas.stroke();
     }
     //填充背景色
     this.fillBackColor = function () {
@@ -282,14 +269,6 @@
         this.can.canvas.closePath();
         this.can.canvas.fill();
         this.can.canvas.globalCompositeOperation = "destination-over";
-        this.drawAllLine();
-    }
-    //去掉pointlist最后一个坐标点：
-    this.clearLastPoint = function () {
-        this.can.pointList.pop();
-        //重画：
-        this.clearCan();
-        this.drawAllLine();
     }
     //判断结束点是否与起始点重合；
     this.equalStartPoint = function (x, y) {
@@ -317,13 +296,11 @@
                 if (Math.abs((x - p[i].pointx) * (x - p[i].pointx)) + Math.abs((y - p[i].pointy) * (y - p[i].pointy)) <= this.can.roundr * this.can.roundr) {
                     //说明点击圆点拖动了；
                     this.can.juPull = true;//拖动
-                    //
                     this.can.curPointIndex = i;
                     p[i].pointx = x;
                     p[i].pointy = y;
                     //重画：
                     this.clearCan();
-                    //showImg();
                     if (this.can.IsClose) {
                         this.fillBackColor();
                     }
@@ -387,8 +364,6 @@
                     }
                 }
                 if (result) {
-                    //
-                    //parseInt(k * newx + b) == parseInt(newy)
                     //添加临时点：
                     this.can.tempPointList[0] = new this.point(newx, newy);//新的坐标点
                     this.can.tempPointList[1] = new this.point(i + 1, i + 1);//需要往pointlist中插入新点的索引；
@@ -406,8 +381,6 @@
                         return;
                     }
                     return;
-                } else {
-                    // $("#Text1").val("");
                 }
             }
             if (ii == 0) {
@@ -421,7 +394,6 @@
                         this.fillBackColor();
                     }
                     this.drawAllLine();
-                    //this.drawArc(this.can.tempPointList[0].pointx, this.can.tempPointList[0].pointy);
                 }
             }
         } else {
