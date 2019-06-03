@@ -17,7 +17,11 @@
 * 速抠图 www.sukoutu.com
 
   [速抠图sukoutu.com](http://www.sukoutu.com) 一个完成度较高的在线抠图工具，集成了该钢笔抠图插件，在此基础上集成了智能抠图、矩阵抠图、图片压缩、图片格式转换的一些功能。
-
+  
+* 商业化在线抠图服务快速接入
+  
+   [速抠图服务开放API](http://www.sukoutu.com/page/note/api.html) 目前通过提供开放链接的方式方便为商家快速接入抠图服务。
+  
 ## 使用方法
 ```js
 //默认配置项
