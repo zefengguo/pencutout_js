@@ -5,20 +5,20 @@
     <title>ImgCut</title>
     <link href="css/penCutout.css" rel="stylesheet"/>
     <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/penCutout.js"></script>
+    <script src="js/classPenCutout.js"></script>
     <script type="text/javascript">
         $(function () {
-            var _penCutout = new penCutout();
+            var _penCutout = new PenCutout();
             _penCutout.init({
                 drawPanel: "drawPanel",
                 imgSrc: "file/target.jpg",
                 penColor: "#ff40ef",
-                width: 400,
-                height: 400
+                width: 1000,
+                height: 1000
             });
             //事件
             $("#btnPoints").click(function () {
-                alert(JSON.stringify(_penCutout.can.pointList));
+                console.log(JSON.stringify(_penCutout.canvas.pointList))
             })
             $("#btnCut").click(function () {
                 _penCutout.createCutImg(function (imgSrcData, w, h) {
@@ -36,13 +36,14 @@
     </script>
 </head>
 <body>
-<div class="canvasDiv" id="drawPanel">
-</div>
+
 <div class="tools">
     <input type="button" value="坐标" id="btnPoints">
     <input type="button" value="重做" id="redo"/>
     <input type="button" value="裁剪" id="btnCut"/>
     <input type="button" value="下载" id="btnDown"/>
+    <img id="imgCut"/>
+    <canvas id="canvas" />
 </div>
 <img id="imgCutShow">
 </body>
