@@ -16,7 +16,7 @@
 
 * 帮帮铺(bbpu) www.bbpu.com
 
-  [bbpu抠图bbpu.com](https://bbpu.com/koutu.html) 一个完成度较高的在线抠图工具，集成了该钢笔抠图插件，在此基础上集成了智能抠图、矩阵抠图、图片压缩、图片格式转换的一些功能。
+  [bbpu抠图](https://bbpu.com/koutu.html) 一个完成度较高的在线抠图工具，集成了该钢笔抠图插件，在此基础上集成了智能抠图、矩阵抠图、图片压缩、图片格式转换的一些功能。
   
 * 商业化在线抠图服务快速接入
   
@@ -24,7 +24,7 @@
 
 * 速写板 www.suxieban.com
 
-  [速写板抠图](https://suxieban.com) 在线画板、在线纸和笔
+  [速写板](https://suxieban.com) 在线画板、在线纸和笔
 
   
 ## 使用方法
